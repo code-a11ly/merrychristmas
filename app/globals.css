@@ -29,3 +29,20 @@ body {
 .christmas-title {
   @apply drop-shadow-sm;
 }
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.slide-message {
+  animation: slide-left 30s linear infinite;
+}
+
+.slide-message:hover {
+  animation-play-state: paused;
+}
