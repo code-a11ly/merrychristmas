@@ -1,5 +1,5 @@
 // app/fonts.ts
-import { Quicksand, Sacramento } from "next/font/google";
+import { Quicksand, Sacramento, Oswald } from "next/font/google";
 
 export const quicksand = Quicksand({
   subsets: ["latin"],
@@ -7,6 +7,11 @@ export const quicksand = Quicksand({
 });
 
 export const sacramento = Sacramento({
+  subsets: ["latin"],
+  weight: "400",
+});
+
+export const oswald = Oswald({
   subsets: ["latin"],
   weight: "400",
 });

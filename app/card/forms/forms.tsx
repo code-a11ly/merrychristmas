@@ -1,8 +1,16 @@
 'use client';
 import { useEffect, useState } from "react";
 
+type FormData = {
+  name: string;
+  email: string;
+  message: string;
+  // add more fields here
+};
 
 export default function Forms() {
+  
+
   const [dataToSend, setDataToSend] = useState({
     name: '',
     email: '',
@@ -11,18 +19,22 @@ export default function Forms() {
     role: 'Employee'
   });
 
-  const handleInputChange = (key, value) => {
-    setDataToSend({
-      ...dataToSend,
-      [key]: value
-    });
+  const handleInputChange = <K extends keyof FormData>(
+    key: K,
+    value: FormData[K]
+  ) => {
+    setDataToSend((prev) => ({
+      ...prev,
+      [key]: value,
+    }));
   };
+
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        registerUser();
+        // registerUser();
       }}
     >
       {/* Name Field */}

@@ -1,7 +1,18 @@
 'use client';
 import { useEffect, useState } from "react";
 
-const calculateTimeLeft = (target) => {
+type TimeLeft = {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+};
+
+type CountdownProps = {
+  targetDate: number;
+};
+
+const calculateTimeLeft = (target: number): TimeLeft | null => {
   const now = Date.now();
   const diff = target - now;
   if (diff <= 0) return null;
@@ -14,17 +25,17 @@ const calculateTimeLeft = (target) => {
   };
 };
 
-const pad = (n) => String(n).padStart(2, "0");
+const pad = (n: number): string => String(n).padStart(2, "0");
 
-const UNITS = [
+const UNITS: { key: keyof TimeLeft; label: string }[] = [
   { key: "days", label: "DIAS" },
   { key: "hours", label: "HORAS" },
   { key: "minutes", label: "MINUTOS" },
   { key: "seconds", label: "SEGUNDOS" },
 ];
 
-export default function Countdown({ targetDate }) {
-  const [timeLeft, setTimeLeft] = useState(null);
+export default function Countdown({ targetDate }: CountdownProps) {
+  const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
 
   useEffect(() => {
     setTimeLeft(calculateTimeLeft(targetDate));
@@ -36,20 +47,36 @@ export default function Countdown({ targetDate }) {
     return () => clearInterval(timer);
   }, [targetDate]);
 
-  if (!timeLeft) return null; // or a skeleton
+  if (!timeLeft) {
+    return (
+      <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-[#4f4f4f]">
+        É NATAL! ✨
+      </h1>
+    );
+  }
 
   return (
-    <div className="flex gap-5">
-      {UNITS.map(({ key, label }) => (
-        <div key={key} className="text-center">
-          <div className="bg-red-500 text-white text-3xl w-20 p-2 rounded-md">
-            {pad(timeLeft[key])}
+    <>
+      <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-[#4f4f4f]">
+        FALTAM
+      </h1>
+
+      <div className="flex gap-5">
+        {UNITS.map(({ key, label }) => (
+          <div key={key} className="text-center">
+            <div className="bg-red-500 text-white text-3xl w-20 p-2 rounded-md">
+              {pad(timeLeft[key])}
+            </div>
+            <span className="block text-gray-400 text-xs">
+              {label}
+            </span>
           </div>
-          <span className="block text-gray-400 text-xs">
-            {label}
-          </span>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+
+      <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-[#4f4f4f]">
+        PARA O NATAL
+      </h1>
+    </>
   );
 }

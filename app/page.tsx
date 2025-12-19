@@ -5,6 +5,7 @@ import Card from './card/card';
 
 import "./globals.css";
 import { quicksand } from "./fonts";
+import { oswald } from "./fonts";
 import { sacramento } from "@/app/fonts";
 
 export default function Home() {
@@ -14,7 +15,7 @@ export default function Home() {
     <>
     <Snow />
     <div className="
-        flex min-h-screen items-center justify-center font-sans
+        flex min-h-screen min-w-screen items-center justify-center font-sans
         bg-[url('/christmas_balls.png')]
         bg-cover bg-center bg-no-repeat
         overflow-hidden
@@ -44,18 +45,21 @@ export default function Home() {
         </p>
       </div>
 
-      <Image
-        src="/tree.png"
-        alt="Tree"
-        width={500}
-        height={1000}
-        className="h-screen w-auto object-cover"
-        priority
-      />
+      <div className="h-screen flex items-end">
+  <Image
+    src="/tree.png"
+    alt="Tree"
+    width={500}
+    height={1000}
+    priority
+    className="h-full w-auto max-w-none scale-110 object-contain"
+  />
+</div>
 
-      <main className="flex min-h-screen w-full flex-col items-center justify-between py-32 px-16 sm:items-start">
 
-        <h1 className={`${quicksand.className} text-4xl font-bold text-white-500`}>
+      <main className="flex flex-col w-screen items-center justify-center gap-8 text-center z-0">
+
+        <h1 className={`${oswald.className} text-5xl font-bold text-white`}>
           A equipe da TI<br/>deseja a todos um
         </h1>
 
@@ -72,6 +76,18 @@ export default function Home() {
         `}>
           Feliz<br/>Natal
         </h1>
+
+        <a
+          target="_blank"
+          href="https://portal.agirsaude.org.br/login"
+          className="flex gap-3 w-auto bg-blue-500 text-md text-white py-2 px-4 rounded-lg cursor-pointer hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        >
+          Acesse o Portal Agir
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+          </svg>
+
+        </a>
 
       </main>
       <Card />

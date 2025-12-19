@@ -14,17 +14,13 @@ export default function Card() {
 
   return (
 
-      <main className="flex h-fit w-full m-10 max-w-3xl rounded-lg flex-col items-center justify-between py-8 px-8 bg-white sm:items-start">
+      <main className="flex h-fit w-fit m-10 max-w-3xl rounded-lg flex-col items-center justify-between py-8 px-8 bg-white sm:items-start">
 
         <div className="flex flex-col items-center gap-2 text-center sm:items-start sm:text-left">
 
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-[#4f4f4f]">
-            FALTAM
-          </h1>
+          
           <Countdown targetDate={targetDate} />
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-[#4f4f4f]">
-            PARA O NATAL
-          </h1>
+          
 
           {/*
           <p className="max-w-md text-lg leading-8 text-zinc-600">
