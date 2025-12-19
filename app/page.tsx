@@ -59,7 +59,7 @@ export default function Home() {
 
       <main className="flex flex-col w-screen items-center justify-center gap-8 text-center z-0">
 
-        <h1 className={`${oswald.className} text-5xl font-bold text-white`}>
+        <h1 className={`${oswald.className} text-3xl font-bold text-white`}>
           A equipe de TI do HEJ<br/>deseja a todos um
         </h1>
 
